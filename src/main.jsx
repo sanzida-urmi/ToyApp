@@ -10,6 +10,8 @@ import Profile from './Pages/Profile.jsx';
 import Login from './Components/Login.jsx';
 import Signup from './Components/Signup.jsx';
 import Error from './Pages/Error.jsx';
+import AllToys from './Pages/AllToys.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+        hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+        loader: ()=>fetch('/Data.json'),
       },
       {
         path: "/details",
@@ -27,6 +31,12 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         Component: Profile
+      },
+      {
+        path: "/all-toys",
+        hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+        loader: ()=>fetch('/Data.json'),
+        Component: AllToys,
       }
     ]
   },
@@ -50,5 +60,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App /> */}
      <RouterProvider router={router} />
+      <ToastContainer />
   </StrictMode>,
 )
