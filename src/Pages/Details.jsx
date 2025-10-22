@@ -16,9 +16,12 @@ toast.success("submit successfully")
   }
   return (
    <div className=''>
-    <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero bg-base-200 min-h-screen ">
+      
+  <div className="hero-content flex-col lg:flex-row-reverse gap-20">
+   
     <div className="text-center lg:text-left text-orange-400">
+<img className='mx-auto pb-10 rounded-2xl border-2 border-amber-400' src={pictureURL} alt="" />
       <h1 className="text-5xl font-bold">{toyName}</h1>
       <p className="py-6 text-orange-400">
         {description}
