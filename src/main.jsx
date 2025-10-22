@@ -12,6 +12,7 @@ import Signup from './Components/Signup.jsx';
 import Error from './Pages/Error.jsx';
 import AllToys from './Pages/AllToys.jsx';
 import { ToastContainer } from 'react-toastify';
+import AuthProvider from './Context/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,8 +59,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App /> */}
+    <AuthProvider>
      <RouterProvider router={router} />
       <ToastContainer />
+      </AuthProvider>
   </StrictMode>,
 )

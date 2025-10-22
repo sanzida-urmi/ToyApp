@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-function SingleData({toyName,pictureURL,rating,availableQuantity,price,sellerName,sellerEmail,description,subCategory}) {
+function SingleData({toyName,pictureURL,rating,availableQuantity,price,sellerName,sellerEmail
+,description,subCategory}) {
     console.log(price,rating,sellerName)
   return (
     <div className="card bg-base-100 w-96 shadow-sm text-orange-400 border-2 border-orange-100">

@@ -5,7 +5,7 @@ import SingleData from '../Components/SingleData';
 function Home() {
   const data = useLoaderData();
   
-    // console.log(data)
+    console.log(data)
     const toys = data;
     // console.log(toys)
 const firstThree = toys.slice(0, 3);
@@ -42,14 +42,12 @@ const newtoy = toys.slice(6,9);
 
 <div className='grid grid-cols-3 gap-5 p-10'>
         {
-            firstThree.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price}/>)
+            firstThree.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description}/>)
             )
         }
       
     </div>
 
-    {/* best deals,New Arrivals */}
-    <h1>popular, best deals,New Arrivals, all</h1>
 
 <h2 className="text-3xl font-bold text-orange-600 mb-4 text-center">💰 Best Deals</h2>
 <p className=" mb-6 text-center text-orange-400">Grab the hottest toys at unbeatable prices!</p>
@@ -57,7 +55,7 @@ const newtoy = toys.slice(6,9);
 
 <div className='grid grid-cols-3 gap-5 p-10'>
         {
-            best.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price}/>)
+            best.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description}/>)
             )
         }
       
@@ -70,7 +68,7 @@ const newtoy = toys.slice(6,9);
 
 <div className='grid grid-cols-3 gap-5 p-10'>
         {
-            newtoy.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price}/>)
+            newtoy.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description}/>)
             )
         }
       

@@ -1,7 +1,23 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-
+import {AuthContext} from "../Context/AuthContext";
 function Navbar() {
+
+  const { user, signoutUserFunc, setUser, loading, setLoading } =
+    use(AuthContext);
+  console.log(user);
+
+  const handleSignout = () => {
+    signoutUserFunc()
+      .then(() => {
+        toast.success("Signout successful");
+        setUser(null);
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
+
   return (
     <div className="navbar bg-orange-600 shadow-sm">
       <div className="navbar-start">
@@ -48,6 +64,18 @@ function Navbar() {
               </NavLink>
             </li>
 
+            {/* <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " border-b-2 border-white" : ""
+                }
+                to="/profile"
+              >
+                Profile
+              </NavLink>
+            </li> */}
+
+            {user && (
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -58,6 +86,8 @@ function Navbar() {
                 Profile
               </NavLink>
             </li>
+          )}
+
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">ToyTopia </a>
@@ -86,7 +116,7 @@ function Navbar() {
             </NavLink>
           </li>
 
-          <li>
+          {/* <li>
             <NavLink
               className={({ isActive }) =>
                 isActive ? "border-b-2 border-white" : ""
@@ -95,11 +125,26 @@ function Navbar() {
             >
               Profile
             </NavLink>
-          </li>
+          </li> */}
+
+           {user && (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? " border-b-2 border-white" : ""
+                }
+                to="/profile"
+              >
+                Profile
+              </NavLink>
+            </li>
+          )}
+
+
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="signup" className="btn">Login</Link>
+        <Link to="/login" className="btn">Login</Link>
       </div>
     </div>
   );
