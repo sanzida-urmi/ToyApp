@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import {AuthContext} from "../Context/AuthContext";
 import { ClockLoader } from "react-spinners";
 import { toast } from "react-toastify";
@@ -9,6 +9,9 @@ function Navbar() {
     use(AuthContext);
   console.log(user);
   const navigate = useNavigate(); 
+
+   const location = useLocation();
+  console.log(location.pathname);
 
   const handleSignout = () => {
     signoutUserFunc()
@@ -174,7 +177,7 @@ function Navbar() {
           </div>
         ) : (
           <button className=" text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
-        <Link to="/login" className="btn">Login</Link>
+        <Link to="/login" state={location.pathname} className="btn">Login</Link>
           </button>
          
         )}

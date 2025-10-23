@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         loader: ()=>fetch('/Data.json'),
       },
       {
-        path: "/details",
+        path: "/details/:toyId",
         Component: Details
       },
       {

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import { FaEye } from "react-icons/fa";
 
@@ -18,6 +18,9 @@ function Signup() {
   const { updateProfileFunc, setLoading, signoutUserFunc, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location);
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -55,20 +58,8 @@ function Signup() {
           console.log(res);
 
           setLoading(false);
-          navigate('/')
-          // sinout
-          // signoutUserFunc()
-          //   .then(() => {
-          //     toast.success(
-          //       "Signup successful. Check your email to validate your account. "
-          //     );
-          //     setUser(null);
-          //     // navigate("/signin");
-          //   })
-          //   .catch((e) => {
-          //     console.log(e);
-          //     toast.error(e.message);
-          //   })}
+          navigate(location.state)
+          
 })
             .catch((e) => {
               console.log(e);

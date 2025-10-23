@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 import { toast } from "react-toastify";
@@ -7,6 +7,10 @@ import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state);
+  const from = location.state?.from3 || '/'
+  console.log(from);
 
   const handleGoogle=()=>{
   
@@ -17,7 +21,10 @@ function Login() {
    
     const user = result.user;
     console.log(user);
-    navigate("/")
+
+    const stored = localStorage.getItem("store") || "/";
+      localStorage.removeItem("store");
+      navigate(stored);
     
   }).catch((error) => {
     const errorCode = error.code;
@@ -43,8 +50,13 @@ e.preventDefault();
     // Signed in 
     const user = res.user;
     console.log(user)
+
+    const stored = localStorage.getItem("store") || "/";
+      localStorage.removeItem("store");
+      navigate(stored);
+
     toast.success("successfully login")
-    navigate('/')
+    // navigate('/')
     // ...
   })
   .catch((error) => {
@@ -103,7 +115,9 @@ e.preventDefault();
             </button>
             <p>
               {" "}
-              First time in website? please <Link to="/signup"><span className="text-blue-600">Register</span></Link>
+              First time in website? please 
+              
+              <Link state={from} to="/signup"><span className="text-blue-600">Register</span></Link>
             </p>
           </fieldset>
           </form>
