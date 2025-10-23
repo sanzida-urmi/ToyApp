@@ -13,6 +13,7 @@ import Error from './Pages/Error.jsx';
 import AllToys from './Pages/AllToys.jsx';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './Context/AuthProvider.jsx';
+import PrivateRoute from './Private/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        Component: Profile
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-toys",

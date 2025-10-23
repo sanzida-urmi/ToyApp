@@ -1,17 +1,21 @@
 import React, { use } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import {AuthContext} from "../Context/AuthContext";
+import { ClockLoader } from "react-spinners";
+import { toast } from "react-toastify";
 function Navbar() {
 
   const { user, signoutUserFunc, setUser, loading, setLoading } =
     use(AuthContext);
   console.log(user);
+  const navigate = useNavigate(); 
 
   const handleSignout = () => {
     signoutUserFunc()
       .then(() => {
         toast.success("Signout successful");
         setUser(null);
+        navigate('/')
       })
       .catch((e) => {
         toast.error(e.message);
@@ -92,7 +96,7 @@ function Navbar() {
         </div>
         <a className="btn btn-ghost text-xl">ToyTopia </a>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1">
           <li>
             <NavLink
@@ -143,9 +147,39 @@ function Navbar() {
 
         </ul>
       </div>
-      <div className="navbar-end">
+
+
+
+          <div className="navbar-end">
+
+{loading ? (
+          <ClockLoader color="#e74c3c" />
+        ) : user ? (
+          <div className="text-center space-y-3 border-2 border-amber-400 gap-2 justify-center items-center flex">
+          
+            <button>
+              <img
+                src={user?.photoURL || "https://via.placeholder.com/88"}
+                className="h-[40px] w-[40px] rounded-full mx-auto border-2 border-amber-400 mt-3"
+                alt=""
+              />
+            </button>
+
+            <div
+              className="dropdown menu rounded-box bg-base-100 shadow-sm border-2 border-amber-400">
+              <button onClick={handleSignout} className="text-orange-600 px-4 py-2 rounded-md font-semibold cursor-pointer">
+                Sign Out
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button className=" text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
         <Link to="/login" className="btn">Login</Link>
-      </div>
+          </button>
+         
+        )}
+        </div>
+
     </div>
   );
 }

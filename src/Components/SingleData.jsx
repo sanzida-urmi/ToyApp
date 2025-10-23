@@ -1,9 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React, { use } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router'
+import { AuthContext } from '../Context/AuthContext';
 
 function SingleData({toyName,pictureURL,rating,availableQuantity,price,sellerName,sellerEmail
 ,description,subCategory}) {
     console.log(price,rating,sellerName)
+
+      const navigate = useNavigate();
+
+      const location = useLocation();
+      console.log(location);
+
+    const { user, setUser, loading, setLoading } =
+        use(AuthContext);
+      console.log(user);
+
+    const canGo=()=>{
+      if(!user){
+navigate('/login');
+      }
+console.log(user);
+
+    }
   return (
     <div className="card bg-base-100 w-96 shadow-sm text-orange-400 border-2 border-orange-100">
   <div >
@@ -25,8 +43,10 @@ function SingleData({toyName,pictureURL,rating,availableQuantity,price,sellerNam
       <div className="badge badge-outline">availableQuantity: {availableQuantity}</div>
     </div>
     <div className="card-actions justify-end">
-      <Link   state={{ toyName, pictureURL, rating, availableQuantity, price,sellerName,sellerEmail,description,subCategory }}
+      <button onClick={canGo}>
+        <Link   state={{ toyName, pictureURL, rating, availableQuantity, price,sellerName,sellerEmail,description,subCategory }}
  to="/details" className="btn bg-orange-600">View More</Link>
+      </button>
     </div>
   </div>
 </div>

@@ -5,21 +5,19 @@ import { FaEye } from "react-icons/fa";
 
 import { IoEyeOff } from "react-icons/io5";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 import { AuthContext } from "../Context/AuthContext";
 
-
-
 function Signup() {
   const [show, setShow] = useState(false);
-  const {
-    updateProfileFunc,
-    setLoading,
-    signoutUserFunc,
-    setUser,
-  } = useContext(AuthContext);
-const navigate = useNavigate();
+  const { updateProfileFunc, setLoading, signoutUserFunc, setUser } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -42,42 +40,50 @@ const navigate = useNavigate();
     }
     toast.success("Registration Successful");
 
-createUserWithEmailAndPassword(auth, email, password)
-  .then((res) => {
-    // Signed up 
-    navigate('/')
-    updateProfileFunc(displayName, photoURL)
-    .then(()=>{
-      console.log(res);
-       setLoading(false);
-      // navigate('/')
-// sinout         
-         signoutUserFunc().then(() => {
-                  toast.success(
-                    "Signup successful. Check your email to validate your account. "
-                  );
-                  setUser(null);
-                  navigate("/signin");
-                })
-                .catch((e) => {
-                console.log(e);
-                toast.error(e.message);
-              })
-              .catch((e) => {
-            console.log(e);
-            toast.error(e.message);
-          });
-    })
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        // Signed up
+        // navigate("/");
+        // updateProfileFunc(displayName, photoURL)
+        const user = res.user;
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          
+          setUser({ ...user, displayName: name, photoURL: photo });
+          console.log(res);
 
-    // const user = res.user;
-    // console.log(user)
-    
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-   console.log(errorMessage)
-  });
+          setLoading(false);
+          navigate('/')
+          // sinout
+          // signoutUserFunc()
+          //   .then(() => {
+          //     toast.success(
+          //       "Signup successful. Check your email to validate your account. "
+          //     );
+          //     setUser(null);
+          //     // navigate("/signin");
+          //   })
+          //   .catch((e) => {
+          //     console.log(e);
+          //     toast.error(e.message);
+          //   })}
+})
+            .catch((e) => {
+              console.log(e);
+              toast.error(e.message);
+            });
+        })
+
+        // const user = res.user;
+        // console.log(user)
+      // })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   return (
@@ -140,10 +146,13 @@ createUserWithEmailAndPassword(auth, email, password)
               >
                 Register
               </button>
-              
+
               <p>
                 {" "}
-                Already have an account? please <Link to="/login"><span className="text-blue-600">Login</span></Link>
+                Already have an account? please{" "}
+                <Link to="/login">
+                  <span className="text-blue-600">Login</span>
+                </Link>
               </p>
             </fieldset>
           </form>
