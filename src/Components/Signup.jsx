@@ -49,6 +49,11 @@ function Signup() {
         // navigate("/");
         // updateProfileFunc(displayName, photoURL)
         const user = res.user;
+
+        const stored = localStorage.getItem("store") || "/";
+      localStorage.removeItem("store");
+      
+
         updateProfile(user, {
           displayName: name,
           photoURL: photo,
@@ -58,7 +63,7 @@ function Signup() {
           console.log(res);
 
           setLoading(false);
-          navigate(location.state)
+          navigate(stored);
           
 })
             .catch((e) => {
