@@ -51,7 +51,7 @@ const updatehandle= async(e)=>{
 
 
   return (
-<div className='flex flex-col lg:flex-row break-all justify-center gap-3 items-center border-2 border-amber-300'>
+<div className='flex flex-col lg:flex-row break-all justify-center gap-3 items-center'>
   <Helmet>
     <title>Profile</title>
   </Helmet>
@@ -72,11 +72,11 @@ const updatehandle= async(e)=>{
       </div>
     </div>
 
-    <div className=' justify-center items-center flex h-[400px] border-2 border-red-500'>
+    <div className=' justify-center items-center flex h-[400px] '>
       
-      <div className="card card-side bg-base-100 shadow-sm text-orange-500 w-full mx-auto  border-2 border-orange-200 flex flex-col">
+      <div className="card card-side bg-base-100 shadow-sm text-orange-500 w-full mx-auto   flex flex-col">
   <div>
-    <figure className="border-2  w-7/12 mx-auto h-7/12  border-amber-400 ">
+    <figure className="  w-7/12 mx-auto h-7/12   ">
     <img
       src={user.photoURL}
       
