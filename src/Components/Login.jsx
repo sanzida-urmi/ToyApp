@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext,useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../Context/AuthContext";
+import { FaEye } from "react-icons/fa";
+
+import { IoEyeOff } from "react-icons/io5";
 
 
 function Login() {
@@ -11,6 +16,13 @@ function Login() {
   console.log(location.state);
   const from = location.state?.from3 || '/'
   console.log(from);
+    const [show, setShow] = useState(false);
+  
+
+  const { updateProfileFunc, setLoading, signoutUserFunc, setUse,sendPassResetEmailFunc } =
+      useContext(AuthContext);
+
+      const emailRef = useRef(null);
 
   const handleGoogle=()=>{
   
@@ -22,8 +34,9 @@ function Login() {
     const user = result.user;
     console.log(user);
 
-    const stored = localStorage.getItem("store") || "/";
+    const stored = location.state || localStorage.getItem("store") || "/";
       localStorage.removeItem("store");
+      console.log(stored);
       navigate(stored);
     
   }).catch((error) => {
@@ -51,7 +64,7 @@ e.preventDefault();
     const user = res.user;
     console.log(user)
 
-    const stored = localStorage.getItem("store") || "/";
+    const stored = location.state || localStorage.getItem("store") || "/";
       localStorage.removeItem("store");
       navigate(stored);
 
@@ -65,20 +78,62 @@ e.preventDefault();
     toast(errorMessage)
   });
 }
+
+const handleForgetPassword = () => {
+    console.log("hi");
+    const email = emailRef.current.value;
+    sendPassResetEmailFunc(email)
+      .then((res) => {
+        setLoading(false);
+        toast.success("Check your email to reset password");
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
+
   return (
     <div className="flex justify-center items-center bg-gradient-to-br from-orange-400 via-pink-500 to-orange-700 min-h-screen">
+      <Helmet>
+                    <title>Login</title>
+                  </Helmet>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body text-orange-600">
           <form onSubmit={handlesign}>
             <fieldset className="fieldset">
             <label className="label text-orange-800">Email</label>
-            <input type="email" name="email" className="input" placeholder="Email" required/>
+            <input type="email" ref={emailRef} name="email" className="input" placeholder="Email" required/>
 
-            <label className="label text-orange-800">Password</label>
-            <input type="password" name="password" className="input" placeholder="Password" required/>
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
+            {/* <label className="label text-orange-800">Password</label>
+            <input type="password" name="password" className="input" placeholder="Password" required/> */}
+
+              <div className="relative">
+                            <label className="block text-orange-800">
+                              Password
+                            </label>
+                            <input
+                              type={show ? "text" : "password"}
+                              name="password"
+                              placeholder="Password"
+                              required
+                              className="input "
+                            />
+                            <span
+                              onClick={() => setShow(!show)}
+                              className="absolute right-[30px] top-[36px] cursor-pointer z-50"
+                            >
+                              {show ? <FaEye /> : <IoEyeOff />}
+                            </span>
+                          </div>
+
+
+            <button
+                className="hover:underline cursor-pointer"
+                onClick={handleForgetPassword}
+                type="button"
+              >
+                Forget password?
+              </button>
             <button type="submit" className="btn bg-orange-400 mt-4 text-white">
               Login
             </button>
@@ -113,6 +168,9 @@ e.preventDefault();
               </svg>
               Login with Google
             </button>
+
+             
+              
             <p>
               {" "}
               First time in website? please 

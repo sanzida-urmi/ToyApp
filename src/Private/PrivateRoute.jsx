@@ -18,6 +18,7 @@ function PrivateRoute({children}) {
   }
 
   if (!user) {
+        localStorage.setItem("store", location.pathname);
     return <Navigate to="/" state={location.pathname} />;
   }
 

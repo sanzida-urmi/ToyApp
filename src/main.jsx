@@ -14,6 +14,9 @@ import AllToys from './Pages/AllToys.jsx';
 import { ToastContainer } from 'react-toastify';
 import AuthProvider from './Context/AuthProvider.jsx';
 import PrivateRoute from './Private/PrivateRoute.jsx';
+import { HelmetProvider } from 'react-helmet-async';
+import View from './Pages/View.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
         path: "/details/:toyId",
         element: (
           <PrivateRoute>
-            <Profile />
+            <Details />
           </PrivateRoute>
         ),
       },
@@ -47,10 +50,8 @@ const router = createBrowserRouter([
         hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
         loader: ()=>fetch('/Data.json'),
         Component: AllToys,
-      }
-    ]
-  },
-  {
+      },
+       {
     path: "/login",
     Component: Login
   },
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
     path: "/signup",
     Component: Signup
   },
+  {
+    path: "/view",
+    Component: View
+  },
+    ]
+  },
+ 
+  
   {
     path: "*",
     Component: Error,
@@ -68,9 +77,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <HelmetProvider>
     <AuthProvider>
      <RouterProvider router={router} />
       <ToastContainer />
       </AuthProvider>
+      </HelmetProvider>
   </StrictMode>,
 )

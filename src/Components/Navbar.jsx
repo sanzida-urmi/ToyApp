@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import {AuthContext} from "../Context/AuthContext";
-import { ClockLoader } from "react-spinners";
+import { ClockLoader, HashLoader } from "react-spinners";
 import { toast } from "react-toastify";
 function Navbar() {
 
@@ -48,7 +48,7 @@ function Navbar() {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu text-orange-500 menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
               <NavLink
@@ -156,20 +156,25 @@ function Navbar() {
           <div className="navbar-end">
 
 {loading ? (
-          <ClockLoader color="#e74c3c" />
+          // <ClockLoader color="#FFFFFF" />
+          <HashLoader color="#FFFFFF"/>
         ) : user ? (
-          <div className="text-center space-y-3 border-2 border-amber-400 gap-2 justify-center items-center flex">
+          <div className="text-center space-y-3  gap-2 justify-center items-center flex">
           
-            <button>
+            <button  className="tooltip tooltip-bottom"
+  data-tip={user?.displayName || "Unknown User"}>
               <img
-                src={user?.photoURL || "https://via.placeholder.com/88"}
-                className="h-[40px] w-[40px] rounded-full mx-auto border-2 border-amber-400 mt-3"
+                // src={user?.photoURL || "https://via.placeholder.com/88"}
+
+                  src={user.photoURL ? user.photoURL : "https://via.placeholder.com/88"}
+                  
+                className="h-[40px] w-[40px] rounded-full mx-auto border-1 border-amber-500 mt-3"
                 alt=""
               />
             </button>
 
             <div
-              className="dropdown menu rounded-box bg-base-100 shadow-sm border-2 border-amber-400">
+              className="dropdown menu rounded-box bg-base-100 shadow-sm border-1 border-amber-500">
               <button onClick={handleSignout} className="text-orange-600 px-4 py-2 rounded-md font-semibold cursor-pointer">
                 Sign Out
               </button>

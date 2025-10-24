@@ -1,6 +1,20 @@
 import React from 'react'
 import { useLoaderData } from 'react-router';
 import SingleData from '../Components/SingleData';
+import { Helmet } from "react-helmet-async";
+
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css"; // basic styles
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// import { Pagination } from 'swiper';
+// import { Pagination, navigation} from "swiper"; 
+
+// Optional modules
+import { Pagination, Navigation,Autoplay  } from "swiper";
+
+
 
 function Home() {
   const data = useLoaderData();
@@ -8,15 +22,57 @@ function Home() {
     console.log(data)
     const toys = data;
     // console.log(toys)
-const firstThree = toys.slice(0, 3);
-const best = toys.slice(3, 6);
-const newtoy = toys.slice(6,9);
+const firstThree = toys.slice(6,12);
+const best = toys.slice(0,3);
+const newtoy = toys.slice(3,6);
 // console.log(firstThree)
   return (
-    <div>
-      <h2 className='text-3xl font-bold text-orange-600 text-center pt-10'>A Local Kids Toy Store Platform</h2>
+    <div className='pt-5'>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+
+ <h2 className='text-3xl font-bold text-orange-600 text-center pb-10'>A Local Kids Toy Store Platform</h2>
+
+      <Swiper
+  modules={[Pagination, Navigation,Autoplay]}
+  spaceBetween={50}
+  slidesPerView={1}
+  navigation
+  pagination={{ clickable: true }}
+  loop={true}
+  autoplay={{ delay: 3000, disableOnInteraction: false }}
+  className="h-96 w-1/3"  // Slide height fix
+>
+  <SwiperSlide className="flex justify-center items-center h-full">
+    <img
+      className="max-h-full object-contain w-full"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWBrNjoLApwDAa-C0R-2M8JZGHiVD8m1eYdA&s"
+      alt="Slide 1"
+    />
+  </SwiperSlide>
+
+  <SwiperSlide className="flex justify-center items-center h-full">
+    <img
+      className="max-h-full object-contain w-full"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRgb8be6Aw5BQdujwFKf--vjmCmaUL7hCc7w&s"
+      alt="Slide 2"
+    />
+  </SwiperSlide>
+
+  <SwiperSlide className="flex justify-center items-center h-full">
+    <img
+      className="max-h-full object-contain w-full"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfZC6e4-6J5pds7SHHW-usGESzbdc6SCC6NxIA9yzQHhFhS7Rg_HdA2E&s"
+      alt="Slide 3"
+    />
+  </SwiperSlide>
+</Swiper>
+
+    
+     
       
-<div className='flex justify-center items-center mx-auto pt-10'>
+{/* <div className='flex justify-center items-center mx-auto pt-10'>
   <div className="carousel carousel-center bg-neutral rounded-box max-w-md space-x-4 p-4">
   <div className="carousel-item">
     <img
@@ -35,7 +91,8 @@ const newtoy = toys.slice(6,9);
   </div>
   
 </div>
-</div>
+</div> */}
+
 <h1>popular, best deals,New Arrivals, all</h1>
 <h2 className="text-3xl font-bold text-orange-600 mb-4 text-center">🔥 Popular Toys</h2>
 <p className="text-gray-600 mb-6 text-center text-orange-400">These toys are loved by kids and parents alike!</p>
