@@ -1,40 +1,17 @@
 import React, { use } from "react";
-// import { Link, NavLink, useLocation, useNavigate } from "react-router";
-// import {AuthContext} from "../Context/AuthContext";
-
 import { HashLoader } from "react-spinners";
-// import { toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthContext";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function Navbar() {
-  // const { user, signoutUserFunc, setUser, loading, setLoading } =
-  //   use(AuthContext);
-  // console.log(user);
-  // const navigate = useNavigate();
-
+  
   const { user, setUser, signoutFunction, loading, setLoading } =
     use(AuthContext);
   console.log(user);
   const navigate = useNavigate();
-
-  //  const location = useLocation();
-  // console.log(location.pathname);
   const location = useLocation();
   console.log(location.pathname);
-
-  // const handleSignout = () => {
-  //   signoutUserFunc()
-  //     .then(() => {
-  //       toast.success("Signout successful");
-  //       setUser(null);
-  //       navigate('/')
-  //     })
-  //     .catch((e) => {
-  //       toast.error(e.message);
-  //     });
-  // };
 
   const signouthandle = () => {
     signoutFunction()
@@ -94,17 +71,6 @@ function Navbar() {
               </NavLink>
             </li>
 
-            {/* <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? " border-b-2 border-white" : ""
-                }
-                to="/profile"
-              >
-                Profile
-              </NavLink>
-            </li> */}
-
             {user && (
               <li>
                 <NavLink
@@ -147,17 +113,6 @@ function Navbar() {
             </NavLink>
           </li>
 
-          {/* <li>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "border-b-2 border-white" : ""
-              }
-              to="/profile"
-            >
-              Profile
-            </NavLink>
-          </li> */}
-
           {user && (
             <li>
               <NavLink
@@ -175,31 +130,13 @@ function Navbar() {
 
       <div className="navbar-end">
         {loading ? (
-          // <ClockLoader color="#FFFFFF" />
           <HashLoader color="#FFFFFF" />
         ) : user ? 
         
         (
-          // <div className="text-center space-y-3  gap-2 justify-center items-center flex">
           <div className="text-center gap-2 space-y-3.5 justify-center flex items-center">
-            {/* <button
-              className="tooltip tooltip-bottom"
-              data-tip={user?.displayName || "Unknown User"}
-            >
-              <img
-                // src={user?.photoURL || "https://via.placeholder.com/88"}
-
-                src={
-                  user.photoURL
-                    ? user.photoURL
-                    : "https://via.placeholder.com/88"
-                }
-                className="h-[40px] w-[40px] rounded-full mx-auto border-1 border-amber-500 mt-3"
-                alt=""
-              />
-            </button> */}
-
-            <button className="tooltip tooltip-bottom"
+          
+                      <button className="tooltip tooltip-bottom"
             data-tip ={user?.displayName || "unknown user"}>
 
 
@@ -209,27 +146,13 @@ function Navbar() {
 
             </button>
 
-
-            {/* <div className="dropdown menu rounded-box bg-base-100 shadow-sm border-1 border-amber-500">
-              <button
-                onClick={handleSignout}
-                className="text-orange-600 px-4 py-2 rounded-md font-semibold cursor-pointer"
-              >
-                Sign Out
-              </button>
-            </div> */}
             <button onClick={signouthandle} className="text-orange-600 bg-white px-4 py-2.5 rounded-md font-semibold cursor-pointer">
               Signout
             </button>
 
           </div>
         ) : (
-          // (
-          //   <button className=" text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
-          // <Link to="/login" state={location.pathname} className="btn">Login</Link>
-          //   </button>
-
-          // )
+         
           <button className="px-3 py-2 text-white rounded-md font-semibold cursor-pointer">
             <Link to="/login" state={location.pathname} className="btn">
               Login

@@ -70,7 +70,6 @@ function Details() {
                 <h1 className="text-orange-400 text-center font-semibold text-2xl py-3">
                   try now form
                 </h1>
-                {/* <label className="label">Name</label> */}
                 <label className="label">Name</label>
                 <input type="text" className="input " placeholder="Name" required/>
 

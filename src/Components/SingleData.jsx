@@ -1,8 +1,6 @@
 import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
-// import { Link, useLocation, useNavigate } from "react-router";
-// import { AuthContext } from "../Context/AuthContext";
 
 function SingleData({
   toyName,
@@ -18,35 +16,15 @@ function SingleData({
 }) {
   console.log(price, rating, sellerName);
 
-  // const navigate = useNavigate();
-
-  // const location = useLocation();
-  // const from2 = location.pathname;
-
   const navigate = useNavigate();
   const location = useLocation();
   const from2 = location.pathname;
-  // const { user, setUser, loading, setLoading } = use(AuthContext);
-  // console.log(user);
-
   const { user, setUser, signoutFunction, loading, setLoading } =
       use(AuthContext);
     console.log(user);
 
   const canGo = () => {
-    // console.log(location);
-    // if (!user) {
-    //   localStorage.setItem("store", `/details/${toyId}`);
-
-    //   navigate("/login");
-    //   return;
-    // }
-    // else{
-    //   navigate(`/details/${toyId}`)
-    // }
-
-    // console.log(user);
-
+   
     console.log(location);
     if (!user){
       localStorage.setItem("store", `/details/${toyId}`);
@@ -69,7 +47,6 @@ function SingleData({
       </div>
       <div className="card-body">
         <h2 className="card-title ">{toyName}</h2>
-        {/* <p className='pb-4'>A card component has a figure, a body part, and inside body there are title and actions parts</p> */}
         <div className="card-actions justify-start pt-5">
           <div className="badge badge-outline">Price: {price}tk</div>
           <div className="badge badge-outline">Rating: {rating}</div>
@@ -81,25 +58,7 @@ function SingleData({
           </div>
         </div>
         <div className="card-actions justify-end">
-          {/* <button onClick={canGo}>
-            <Link
-              state={{
-                toyName,
-                pictureURL,
-                rating,
-                availableQuantity,
-                price,
-                sellerName,
-                sellerEmail,
-                description,
-                subCategory,
-              }}
-              to={`/details/${toyId}`}
-              className="btn bg-orange-600"
-            >
-              View More
-            </Link>
-          </button> */}
+         
           <button onClick={canGo}>
             <Link className="btn bg-orange-500"
              state={{

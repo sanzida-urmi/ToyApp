@@ -1,11 +1,3 @@
-// import React, { use, useState } from 'react'
-// import { AuthContext } from '../Context/AuthContext';
-// import { Helmet } from 'react-helmet-async';
-// import { toast } from 'react-toastify';
-// import { updateProfile } from 'firebase/auth';
-// import { auth } from '../Firebase/Firebase.config';
-// import { Link } from 'react-router';
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { updateProfile } from "firebase/auth";
@@ -15,9 +7,6 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 function Profile() {
-
-  // const { user, signoutUserFunc, setUser, loading, setLoading } =
-  //   use(AuthContext);
 
   const {
       user,
@@ -29,39 +18,10 @@ function Profile() {
       setLoading,
     } = useContext(AuthContext);
 
-// const [name, setName] = useState(user?.displayName || "");
-// const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
-
-//   console.log(user);
 const [name,setName] = useState(user?.displayName || "");
 const [photoURL, setPhotoURL]=useState(user?.photoURL || "");
 console.log(user);
 
- 
-  // updateProfile(user, {
-  //   displayName: name,
-  //   photoURL: photoURL
-  // })
-  //   .then(() => {
-  //     // Update context user
-  //     setUser({ ...user, displayName: name, photoURL: photoURL });
-  //     toast.success("Profile updated successfully!");
-  //     setLoading(false);
-  //   })
-  //   .catch((error) => {
-  //     toast.error(error.message);
-  //     setLoading(false);
-  //   });
-
-//  const handleUpdate =async  (e) => {
-//   e.preventDefault();
-//   const Uname = e.target.name.value;
-//   const PhotoURL = e.target.photourl.value;
-//   if (!user) 
-//     return;
-
-//   console.log(Uname)
-//   setLoading(true);
 const updatehandle= async(e)=>{
   e.preventDefault();
   const Uname = e.target.name.value;
@@ -71,24 +31,12 @@ const updatehandle= async(e)=>{
   console.log(Uname);
   setLoading(true);
 
-  //  try {
-  //     await updateProfile(auth.currentUser, {
-  //       displayName: Uname,
-  //       photoURL: PhotoURL,
-  //     });
-  // console.log(Uname)
   try{
     await updateProfile(auth.currentUser,{
       displayName: Uname,
       photoURL: PhotoURL,
     });
   
-
-      // local state update
-      // setUser({ ...user, displayName: Uname, photoURL:PhotoURL });
-      // console.log(user);
-
-      // toast.success("Profile updated successfully!");
       setUser({ ...user,displayName: Uname, photoURL: PhotoURL});
       console.log(user);
       toast.success("successfully updated");
@@ -98,12 +46,7 @@ const updatehandle= async(e)=>{
   } finally {
     setLoading(false);
   }
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Failed to update profile");
-    // } finally {
-    //   setLoading(false);
-    // }
+    
 };
 
 

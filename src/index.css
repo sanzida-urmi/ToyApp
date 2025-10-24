@@ -1,12 +1,7 @@
 @import "tailwindcss";
-/* @plugin "daisyui"; */
  @plugin "daisyui" {
   themes: light --prefersdark, dark --default, cupcake;
 }
 
- /* nav .active {
-    @apply
-    border-2
-    border-red-400 */
  
 

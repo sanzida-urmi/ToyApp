@@ -1,13 +1,9 @@
 import React from 'react'
 import { useLocation } from 'react-router'
-// import { Helmet } from 'react-helmet-async';
-// import { useLocation } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 
 function View() {
-  //   const location = useLocation();
-  // const photoURL = location.state;
-  
+ 
   const location = useLocation();
   const photoURL = location.state;
   console.log(photoURL)
@@ -17,11 +13,7 @@ function View() {
         <title>PhotoURL</title>
       </Helmet>
       {photoURL}
-        {/* <Helmet>
-                            <title>PhotoURL</title>
-                          </Helmet> */}
-      {/* {photoURL} */}
-    </div>
+           </div>
   )
 }
 

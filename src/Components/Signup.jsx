@@ -1,6 +1,4 @@
 import React from "react";
-// import { Link, useLocation, useNavigate } from "react-router";
-
 import { useContext, useState } from "react";
 import AuthProvider from "../Context/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -17,28 +15,7 @@ import { IoEyeOff } from "react-icons/io5";
 import { AuthContext } from "../Context/AuthContext";
 import { Helmet } from "react-helmet-async";
 
-// import { FaEye } from "react-icons/fa";
-
-// import { IoEyeOff } from "react-icons/io5";
-// import { toast } from "react-toastify";
-// import {
-//   createUserWithEmailAndPassword,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-//   updateProfile,
-// } from "firebase/auth";
-// import { auth } from "../Firebase/Firebase.config";
-// import { AuthContext } from "../Context/AuthContext";
-// import { Helmet } from "react-helmet-async";
-
 function Signup() {
-  // const [show, setShow] = useState(false);
-  // const { updateProfileFunc, setLoading, signoutUserFunc, setUser } =
-  //   useContext(AuthContext);
-  // const navigate = useNavigate();
-
-  // const location = useLocation();
-  // console.log(location);
 
   const [see, setSee] = useState(false);
   const {
@@ -54,23 +31,6 @@ function Signup() {
   const location = useLocation();
   console.log(location);
 
-  // const handleGoogle=()=>{
-  //   const provider = new GoogleAuthProvider();
-  //   signInWithPopup(auth, provider)
-  //   .then((result) => {
-  //     const user = result.user;
-  //     console.log(user);
-  //     const stored = location.state || localStorage.getItem("store") || "/";
-  //       localStorage.removeItem("store");
-  //       console.log(stored);
-  //       navigate(stored);
-  //   }).catch((error) => {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     console.log(errorMessage);
-
-  //   });
-  //   }
   const googlehandle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -88,15 +48,7 @@ function Signup() {
       });
   };
 
-  // const handlesubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   const name = form.name.value;
-  //   const photo = form.photo.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-
-  const submithandle = (e) => {
+    const submithandle = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -104,16 +56,6 @@ function Signup() {
     const photo = e.target.photo.value;
 
     console.log(name, email, photo, password);
-
-    // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-
-    // if (!passwordRegex.test(password)) {
-    //   toast.error(
-    //     "Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
-    //   );
-    //   return;
-    // }
-    // toast.success("Registration Successful");
 
     const regexpass = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -125,33 +67,7 @@ function Signup() {
     }
     toast.success("Registration successful");
 
-    // createUserWithEmailAndPassword(auth, email, password)
-    //   .then((res) => {
-    // Signed up
-    // navigate("/");
-    // updateProfileFunc(displayName, photoURL)
-
-    //   const user = res.user;
-    //   const stored = localStorage.getItem("store") || "/";
-    // localStorage.removeItem("store");
-    // updateProfile(user, {
-    //     displayName: name,
-    //     photoURL: photo,
-
-    //         .then(() => {
-    //           setUser({ ...user, displayName: name, photoURL: photo });
-    //           console.log(res);
-    //           setLoading(false);
-    //           navigate(stored);
-    // })
-    //             .catch((e) => {
-    //               console.log(e);
-    //               toast.error(e.message);
-    //             });
-    //         })
-    //   })
-
-    createUserWithEmailAndPassword(auth, email, password).then((res) => {
+       createUserWithEmailAndPassword(auth, email, password).then((res) => {
       const user = res.user;
       const stored = localStorage.getItem("store") || "/";
       localStorage.removeItem("store");
@@ -172,25 +88,8 @@ function Signup() {
     });
   };
 
-  // const user = res.user;
-  // console.log(user)
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   console.log(errorMessage);
-  // });
-
   return (
-    // <div className="flex break-all justify-center items-center bg-gradient-to-br from-orange-400 via-red-500 to-orange-700 min-h-screen">
-    //   <Helmet>
-    //                 <title>Registration</title>
-    //               </Helmet>
-    //   <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-    //     <div className="card-body text-orange-600">
-    //       <form onSubmit={handlesubmit}>
-    //         <fieldset className="fieldset">
-
+   
     <div className="flex break-all justify-center items-center bg-gradient-to-bl from bg-orange-400 via-red-500 to-orange-700 min-h-screen">
       <Helmet>
         <title>Login</title>
@@ -200,16 +99,8 @@ function Signup() {
         <div className="card-body text-orange-600">
           <form onSubmit={submithandle}>
             <fieldset className="fieldset">
-              {/* <label className="label text-orange-800">Name</label>
-              <input
-                type="text"
-                name="name"
-                className="input"
-                placeholder="Name"
-                required
-              /> */}
-
-              <label className="label text-orange-800">Name</label>
+             
+                           <label className="label text-orange-800">Name</label>
               <input
                 type="text"
                 name="name"
@@ -236,58 +127,18 @@ function Signup() {
                 required
               />
 
-              {/* <label className="label text-orange-800">Photo URL</label>
-              <input
-                type="text"
-                name="photo"
-                className="input"
-                placeholder="Photo URL"
-                required
-              />
-
-              <label className="label text-orange-800 ">Email</label>
-              <input
-                type="email"
-                name="email"
-                className="input"
-                placeholder="Email"
-                required
-              /> */}
-
-              {/*.. <label className="label text-orange-800">Password</label>
-          <input type="password" className="input" placeholder="Password" required/> */}
-
-              {/* <div className="relative">
-                <label className="block text-sm font-medium mb-1">
-                  Password
-                </label> */}
-
               <div className="relative">
                 <label className="block text-orange-800 text-sm mb-1">
                   Password
                 </label>
 
-                {/* <input
-                  type={show ? "text" : "password"}
-                  name="password"
-                  placeholder="••••••••"
-                  className="input input-bordered w-full bg-white/20 text-orange placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-400"
-                /> */}
-
-                <input
+                            <input
                   type={see ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   required
                   className="input input-bordered w-full bg-white  focus:outline-none focus:ring-2 focus:ring-pink-400"
                 />
-
-                {/* <span
-                  onClick={() => setShow(!show)}
-                  className="absolute right-[8px] top-[36px] cursor-pointer z-50"
-                >
-                  {show ? <FaEye /> : <IoEyeOff />}
-                </span> */}
 
                 <span
                   onClick={() => setSee(!see)}
@@ -296,13 +147,6 @@ function Signup() {
                   {see ? <FaEye /> : <IoEyeOff />}
                 </span>
               </div>
-
-              {/* <button
-                type="submit"
-                className="btn bg-orange-500 mt-4 text-white"
-              >
-                Register
-              </button> */}
 
 <button type="submit" className="btn bg-orange-500 mt-4 text-white">Register</button>
 
@@ -339,14 +183,6 @@ function Signup() {
                 </svg>
                 Login with Google
               </button>
-
-              {/* <p>
-                {" "}
-                Already have an account? please{" "}
-                <Link to="/login">
-                  <span className="text-blue-600">Login</span>
-                </Link>
-              </p> */}
 
                <p>Already have an account? please {" "}
               <Link  to="/login">
