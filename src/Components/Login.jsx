@@ -65,16 +65,21 @@ console.log(email,password)
 
 }
 
-const forgetPasshandle =()=>{
+// const forgetPasshandle =()=>{
+//   const email = refEmail.current.value;
+//   passResetFunction(email)
+//   .then(res=>{
+//   setLoading(false);
+//   toast.success("check email box for reset email");
+// })
+// .catch(e=>{
+// toast.error(e.message);
+// })}
+
+const goforget =()=>{
   const email = refEmail.current.value;
-  passResetFunction(email)
-  .then(res=>{
-  setLoading(false);
-  toast.success("check email box for reset email");
-})
-.catch(e=>{
-toast.error(e.message);
-})}
+  navigate('/forget',{state: {email}})
+}
 
 
 
@@ -113,7 +118,10 @@ toast.error(e.message);
                           </div>
 
               <button className="hover:underline cursor-pointer"
-              onClick={forgetPasshandle} type="button">Forget password?</button>
+              onClick={goforget} type="button">Forget password?</button>
+
+              {/* <Link to='/forget' state={} className="hover:underline cursor-pointer"
+              onClick={forgetPasshandle} type="button">Forget password?</Link> */}
 
             <button type="submit" className="btn bg-orange-400 mt-4 text-white">Login</button>
 

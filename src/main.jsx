@@ -16,6 +16,7 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import PrivateRoute from './Private/PrivateRoute.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import View from './Pages/View.jsx';
+import Forget from './Pages/Forget.jsx';
 
 
 const router = createBrowserRouter([
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   {
     path: "/view",
     Component: View
+  },
+  {
+    path: "/forget",
+    Component: Forget
   },
     ]
   },

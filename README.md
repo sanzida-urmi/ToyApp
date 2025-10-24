@@ -11,7 +11,8 @@ key features:
 4. dynamic swiper slider on the homepage
 5. this website works on all devices
 6. it has custom 404 not found page
-real time user feedback using toast notification.
+7.real time user feedback using toast notification.
+8. user can signup and signin
 
 package install:
 react, firebase, react-helmet-async, react-toastify,react-icon,tailwind,daisyui
