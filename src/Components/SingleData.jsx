@@ -1,6 +1,8 @@
 import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
+// import { Link, useLocation, useNavigate } from "react-router";
+// import { AuthContext } from "../Context/AuthContext";
 
 function SingleData({
   toyName,
@@ -16,30 +18,50 @@ function SingleData({
 }) {
   console.log(price, rating, sellerName);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
+  // const location = useLocation();
+  // const from2 = location.pathname;
+
+  const navigate = useNavigate();
   const location = useLocation();
   const from2 = location.pathname;
+  // const { user, setUser, loading, setLoading } = use(AuthContext);
+  // console.log(user);
 
-  const { user, setUser, loading, setLoading } = use(AuthContext);
-  console.log(user);
+  const { user, setUser, signoutFunction, loading, setLoading } =
+      use(AuthContext);
+    console.log(user);
 
   const canGo = () => {
-    console.log(location);
-    if (!user) {
-      localStorage.setItem("store", `/details/${toyId}`);
+    // console.log(location);
+    // if (!user) {
+    //   localStorage.setItem("store", `/details/${toyId}`);
 
+    //   navigate("/login");
+    //   return;
+    // }
+    // else{
+    //   navigate(`/details/${toyId}`)
+    // }
+
+    // console.log(user);
+
+    console.log(location);
+    if (!user){
+      localStorage.setItem("store", `/details/${toyId}`);
       navigate("/login");
       return;
     }
+
     else{
       navigate(`/details/${toyId}`)
     }
-
     console.log(user);
   };
+
   return (
-    <div className="card bg-base-100 w-96 shadow-sm text-orange-400 border-2 border-orange-100">
+    <div className="card bg-base-100 w-10/12 sm:w-96 shadow-sm text-orange-400 border-2 mx-auto border-orange-100 break-all">
       <div>
         <figure className="h-48">
           <img src={pictureURL} alt="Shoes" />
@@ -59,7 +81,7 @@ function SingleData({
           </div>
         </div>
         <div className="card-actions justify-end">
-          <button onClick={canGo}>
+          {/* <button onClick={canGo}>
             <Link
               state={{
                 toyName,
@@ -77,11 +99,18 @@ function SingleData({
             >
               View More
             </Link>
+          </button> */}
+          <button onClick={canGo}>
+            <Link className="btn bg-orange-500"
+             state={{
+              toyName, 
+              pictureURL,rating,availableQuantity,price,sellerEmail,sellerName,description,subCategory
+            }} to={`/details/${toyId}`
+            }>View more</Link>
           </button>
         </div>
       </div>
     </div>
   );
 }
-// to={`/details/${id}`}
 export default SingleData;

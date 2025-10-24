@@ -1,12 +1,16 @@
 import React from 'react'
+// import { Swiper, SwiperSlide } from "swiper/react";
 import { Helmet } from 'react-helmet-async';
-import { Swiper, SwiperSlide } from "swiper/react";
 
 function Error() {
   return (
     
     <div className='flex justify-center items-center text-3xl font-semibold min-h-screen'>
-      <Helmet>
+      {/* <Helmet>
+      <title>Error</title>
+    </Helmet> */}
+
+    <Helmet>
       <title>Error</title>
     </Helmet>
       Error 404

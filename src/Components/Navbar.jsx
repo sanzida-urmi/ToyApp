@@ -1,24 +1,47 @@
 import React, { use } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import {AuthContext} from "../Context/AuthContext";
-import { ClockLoader, HashLoader } from "react-spinners";
-import { toast } from "react-toastify";
-function Navbar() {
+// import { Link, NavLink, useLocation, useNavigate } from "react-router";
+// import {AuthContext} from "../Context/AuthContext";
 
-  const { user, signoutUserFunc, setUser, loading, setLoading } =
+import { HashLoader } from "react-spinners";
+// import { toast } from "react-toastify";
+import { AuthContext } from "../Context/AuthContext";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+
+function Navbar() {
+  // const { user, signoutUserFunc, setUser, loading, setLoading } =
+  //   use(AuthContext);
+  // console.log(user);
+  // const navigate = useNavigate();
+
+  const { user, setUser, signoutFunction, loading, setLoading } =
     use(AuthContext);
   console.log(user);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-   const location = useLocation();
+  //  const location = useLocation();
+  // console.log(location.pathname);
+  const location = useLocation();
   console.log(location.pathname);
 
-  const handleSignout = () => {
-    signoutUserFunc()
+  // const handleSignout = () => {
+  //   signoutUserFunc()
+  //     .then(() => {
+  //       toast.success("Signout successful");
+  //       setUser(null);
+  //       navigate('/')
+  //     })
+  //     .catch((e) => {
+  //       toast.error(e.message);
+  //     });
+  // };
+
+  const signouthandle = () => {
+    signoutFunction()
       .then(() => {
-        toast.success("Signout successful");
+        toast.success("successfully signout");
         setUser(null);
-        navigate('/')
+        navigate("/");
       })
       .catch((e) => {
         toast.error(e.message);
@@ -26,8 +49,8 @@ function Navbar() {
   };
 
   return (
-    <div className="navbar bg-orange-600 shadow-sm">
-      <div className="navbar-start">
+    <div className="navbar bg-orange-600 shadow-sm break-all">
+      <div className="navbar-start break-all wrap-anywhere">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -83,21 +106,22 @@ function Navbar() {
             </li> */}
 
             {user && (
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? " border-b-2 border-white" : ""
-                }
-                to="/profile"
-              >
-                Profile
-              </NavLink>
-            </li>
-          )}
-
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " border-b-2 border-white" : ""
+                  }
+                  to="/profile"
+                >
+                  Profile
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">ToyTopia </a>
+        <a className="btn btn-ghost   text-xl break-all wrap-anywhere break-all">
+          ToyTopia{" "}
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1">
@@ -134,7 +158,7 @@ function Navbar() {
             </NavLink>
           </li> */}
 
-           {user && (
+          {user && (
             <li>
               <NavLink
                 className={({ isActive }) =>
@@ -146,48 +170,73 @@ function Navbar() {
               </NavLink>
             </li>
           )}
-
-
         </ul>
       </div>
 
-
-
-          <div className="navbar-end">
-
-{loading ? (
+      <div className="navbar-end">
+        {loading ? (
           // <ClockLoader color="#FFFFFF" />
-          <HashLoader color="#FFFFFF"/>
-        ) : user ? (
-          <div className="text-center space-y-3  gap-2 justify-center items-center flex">
-          
-            <button  className="tooltip tooltip-bottom"
-  data-tip={user?.displayName || "Unknown User"}>
+          <HashLoader color="#FFFFFF" />
+        ) : user ? 
+        
+        (
+          // <div className="text-center space-y-3  gap-2 justify-center items-center flex">
+          <div className="text-center gap-2 space-y-3.5 justify-center flex items-center">
+            {/* <button
+              className="tooltip tooltip-bottom"
+              data-tip={user?.displayName || "Unknown User"}
+            >
               <img
                 // src={user?.photoURL || "https://via.placeholder.com/88"}
 
-                  src={user.photoURL ? user.photoURL : "https://via.placeholder.com/88"}
-                  
+                src={
+                  user.photoURL
+                    ? user.photoURL
+                    : "https://via.placeholder.com/88"
+                }
                 className="h-[40px] w-[40px] rounded-full mx-auto border-1 border-amber-500 mt-3"
                 alt=""
               />
+            </button> */}
+
+            <button className="tooltip tooltip-bottom"
+            data-tip ={user?.displayName || "unknown user"}>
+
+
+              <img src={user.photoURL?user.photoURL : "https://via.placeholder.com/88"}
+              className="h-[40px] w-[40px] rounded-full mx-auto border-1 border-amber-500 mt-3"
+              alt="" />
+
             </button>
 
-            <div
-              className="dropdown menu rounded-box bg-base-100 shadow-sm border-1 border-amber-500">
-              <button onClick={handleSignout} className="text-orange-600 px-4 py-2 rounded-md font-semibold cursor-pointer">
+
+            {/* <div className="dropdown menu rounded-box bg-base-100 shadow-sm border-1 border-amber-500">
+              <button
+                onClick={handleSignout}
+                className="text-orange-600 px-4 py-2 rounded-md font-semibold cursor-pointer"
+              >
                 Sign Out
               </button>
-            </div>
+            </div> */}
+            <button onClick={signouthandle} className="text-orange-600 bg-white px-4 py-2.5 rounded-md font-semibold cursor-pointer">
+              Signout
+            </button>
+
           </div>
         ) : (
-          <button className=" text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
-        <Link to="/login" state={location.pathname} className="btn">Login</Link>
-          </button>
-         
-        )}
-        </div>
+          // (
+          //   <button className=" text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
+          // <Link to="/login" state={location.pathname} className="btn">Login</Link>
+          //   </button>
 
+          // )
+          <button className="px-3 py-2 text-white rounded-md font-semibold cursor-pointer">
+            <Link to="/login" state={location.pathname} className="btn">
+              Login
+            </Link>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -26,7 +26,8 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+        // hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+        hydrateFallbackElement: <span className='loading loading-spinner text-warning'></span>,
         loader: ()=>fetch('/Data.json'),
       },
       {
@@ -47,7 +48,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-toys",
-        hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+        // hydrateFallbackElement: <span className="loading loading-spinner text-warning"></span>,
+                hydrateFallbackElement: <span className='loading loading-spinner text-warning'></span>,
         loader: ()=>fetch('/Data.json'),
         Component: AllToys,
       },
