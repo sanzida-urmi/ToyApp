@@ -1,6 +1,6 @@
 ToyTopia: the name of the plateform is toytopia. it is a react web application. here people can explore various type of toys, view details, and update profiles by using firebase.
 
-Live URL: 
+Live URL:  https://stunning-tartufo-96c8b4.netlify.app
 
 Purpose: this project is build to practice react router, firebase , tailwind css. it is a responsive website.
 
