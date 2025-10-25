@@ -34,8 +34,10 @@ function Details() {
     subCategory,
   } = toy;
 
-  const showmsg = () => {
+  const showmsg = (e) => {
+    e.preventDefault();
     toast.success("submit successfully");
+
   };
   return (
     <div className="">
