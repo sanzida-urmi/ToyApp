@@ -86,6 +86,9 @@ function Signup() {
           toast.error(e.message);
         });
     });
+
+
+    
   };
 
   return (

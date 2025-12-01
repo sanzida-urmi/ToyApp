@@ -8,6 +8,7 @@ function Navbar() {
   
   const { user, setUser, signoutFunction, loading, setLoading } =
     use(AuthContext);
+    
   console.log(user);
   const navigate = useNavigate();
   const location = useLocation();

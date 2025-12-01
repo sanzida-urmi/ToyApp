@@ -22,7 +22,7 @@ function Home() {
         <title>Home</title>
       </Helmet>
 
- <h2 className='text-3xl font-bold text-orange-600 text-center pb-10'>A local kids toys store platform</h2>
+ <h2 className='text-3xl font-bold text-orange-600 text-center pb-10'>A local kids toy store platform</h2>
 
       <div className=' '>
         <Swiper

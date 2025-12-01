@@ -65,16 +65,6 @@ console.log(email,password)
 
 }
 
-// const forgetPasshandle =()=>{
-//   const email = refEmail.current.value;
-//   passResetFunction(email)
-//   .then(res=>{
-//   setLoading(false);
-//   toast.success("check email box for reset email");
-// })
-// .catch(e=>{
-// toast.error(e.message);
-// })}
 
 const goforget =()=>{
   const email = refEmail.current.value;
