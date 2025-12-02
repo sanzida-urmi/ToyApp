@@ -25,6 +25,12 @@ function Details() {
 
   const {
     toyName,
+    ageGroup,
+    brand,
+    material,
+    weight,
+    dimensions,
+    releaseDate,
     pictureURL,
     rating,
     availableQuantity,
@@ -49,7 +55,7 @@ function Details() {
 
           <div className="text-center  lg:text-left text-orange-400">
             <img
-              className="mx-auto pb-10 rounded-2xl border-2 border-amber-400"
+              className="mx-auto pb-10 rounded-2xl  h-100"
               src={pictureURL}
               alt=""
             />
@@ -63,6 +69,30 @@ function Details() {
             </p>
             <p>
               subCategory: <span className="font-bold">{subCategory}</span>
+            </p>
+            <p>
+              Rating: <span className="font-bold">{rating}</span>
+            </p>
+            <p>
+              AvailableQuantity: <span className="font-bold">{availableQuantity}</span>
+            </p>
+            <p>
+              AgeGroup: <span className="font-bold">{ageGroup}</span>
+            </p>
+            <p>
+              Brand: <span className="font-bold">{brand}</span>
+            </p>
+            <p>
+              Material: <span className="font-bold">{material}</span>
+            </p>
+            <p>
+              Weight: <span className="font-bold">{weight}</span>
+            </p>
+            <p>
+              Dimensions: <span className="font-bold">{dimensions}</span>
+            </p>
+            <p>
+              ReleaseDate: <span className="font-bold">{releaseDate}</span>
             </p>
           </div>
           <div className="card bg-base-100  w-full max-w-sm shrink-0 shadow-2xl">

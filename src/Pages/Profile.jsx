@@ -79,7 +79,7 @@ const updatehandle= async(e)=>{
     <figure className="  w-7/12 mx-auto h-7/12   ">
     <img
       src={user.photoURL}
-      
+      className="max-h-50 max-w-50"
       alt="" />
   </figure>
   </div>

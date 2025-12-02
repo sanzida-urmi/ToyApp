@@ -37,6 +37,7 @@ function Signup() {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        setUser(user);
         const stored = location.state || localStorage.getItem("store") || "/";
         localStorage.removeItem("store");
         console.log(stored);

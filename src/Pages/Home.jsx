@@ -7,14 +7,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {Pagination, Autoplay,Navigation} from "swiper";
 import SingleData from '../Components/SingleData';
+import { PiStarDuotone } from 'react-icons/pi';
 
 function Home() {
   const data = useLoaderData()
-  console.log(data);
+  // console.log(data);
   const toys = data;
-  const firstsix = toys.slice(6,12);
-  const best = toys.slice(0,3);
-  const newtoy = toys.slice(3,6);
+  const firstsix = toys.slice(4,12);
+  const best = toys.slice(0,4);
+  const newtoy = toys.slice(4,8);
 
   return (
       <div className='pt-5'>
@@ -22,9 +23,9 @@ function Home() {
         <title>Home</title>
       </Helmet>
 
- <h2 className='text-3xl font-bold text-orange-600 text-center pb-10'>A local kids toy store platform</h2>
+ <h2 className='text-3xl font-bold text-orange-600 text-center pb-5'>A local kids toy store platform</h2>
 
-      <div className=' '>
+      <div>
         <Swiper
   modules={[Pagination, Navigation,Autoplay]}
   spaceBetween={50}
@@ -33,19 +34,19 @@ function Home() {
   pagination={{ clickable: true }}
   loop={true}
   autoplay={{ delay: 3000, disableOnInteraction: false }}
-  className="h-96 w-2/3"  // Slide height fix
+  className="h-80 w-full "  // Slide height fix
 >
   <SwiperSlide className="flex justify-center items-center h-full">
     <img
-      className="h-full object-contain w-full"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWBrNjoLApwDAa-C0R-2M8JZGHiVD8m1eYdA&s"
+      className=" object-contain h-80 w-full object-cover"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOj0_FjOchV_VzdUlimQ4dL0EhzMO0R59VHg7LNcxAmu5CNRg4sVjA3r4&s"
       alt="Slide 1"
     />
   </SwiperSlide>
 
   <SwiperSlide className="flex justify-center items-center h-full">
     <img
-      className="h-full object-contain w-full"
+      className=" object-contain h-80 w-full object-cover"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRgb8be6Aw5BQdujwFKf--vjmCmaUL7hCc7w&s"
       alt="Slide 2"
     />
@@ -53,7 +54,7 @@ function Home() {
 
   <SwiperSlide className="flex justify-center items-center h-full">
     <img
-      className="h-full object-contain w-full"
+      className="object-contain h-80 w-full object-cover"
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTfZC6e4-6J5pds7SHHW-usGESzbdc6SCC6NxIA9yzQHhFhS7Rg_HdA2E&s"
       alt="Slide 3"
     />
@@ -61,10 +62,10 @@ function Home() {
 </Swiper>
       </div>
 
-<h2 className='text-3xl font-bold text-orange-600 mb-4 text-center'>Popular Toys</h2>
+<h2 className='text-3xl font-bold text-orange-600 mb-4 text-center mt-5'>Popular Toys</h2>
 <p className='text-orange-600 mb-6 text-center'>This toys are loved by kids</p>
 
-<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 p-10 '>
+<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5 px-0 '>
         {
             firstsix.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description} toyId={singledata.toyId}/>)
             )
@@ -72,10 +73,10 @@ function Home() {
       
     </div>
 
-<h2 className='text-3xl font-bold text-orange-600 mb-4 text-center'>Best Deals</h2>
+<h2 className='text-3xl font-bold text-orange-600 mt-5 mb-4 text-center'>Best Deals</h2>
 <p className='text-orange-600 mb-6 text-center'>Grab the hottest toys at unbeatable prices</p>
 
-<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 p-10'>
+<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5 px-0 '>
         {
             best.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description} toyId={singledata.toyId}/>)
             )
@@ -83,10 +84,10 @@ function Home() {
       
     </div>
 
-<h2 className='text-3xl font-bold text-orange-600 mb-4 text-center'>New Arrivals</h2>
+<h2 className='text-3xl font-bold text-orange-600 mb-4 text-center mt-5'>New Arrivals</h2>
 <p className='text-orange-600 mb-6 text-center'>Cheackout the leatest toys just added to our store</p>
 
-<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 p-10'>
+<div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-5 px-0 mb-5'>
         {
             newtoy.map(singledata => (<SingleData key={singledata.toyId} pictureURL={singledata.pictureURL} toyName={singledata.toyName} rating={singledata.rating} availableQuantity={singledata.availableQuantity} price={singledata.price} sellerEmail={singledata.sellerEmail} subCategory={singledata.subCategory} sellerName={singledata.sellerName} description={singledata.description} toyId={singledata.toyId}/>)
             )
@@ -94,7 +95,25 @@ function Home() {
       
     </div>
 
-    </div>
+     <div className='mb-10'>
+       <h2 className='text-3xl font-bold text-orange-600 mb-4 text-center mt-5'>Types of Toys </h2>
+  <p className=' text-center mx-auto text-orange-400 '> Plush Dolls</p>
+  <p className=' text-center mx-auto text-orange-400 '> Teddy Bear</p>
+  <p className=' text-center mx-auto text-orange-400 '> Toys Car</p>
+  <p className=' text-center mx-auto text-orange-400 '> Trucks</p>
+  <p className=' text-center mx-auto text-orange-400 '> Airplanes</p>
+  <p className=' text-center mx-auto text-orange-400 '> Boats</p>
+  <p className=' text-center mx-auto text-orange-400 '> Lego</p>
+  <p className=' text-center mx-auto text-orange-400 '> Rattles</p>
+
+ 
+ 
+</div>
+
+
+</div>
+
+    
   )
 }
 

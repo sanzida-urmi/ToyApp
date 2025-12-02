@@ -17,6 +17,8 @@ import PrivateRoute from './Private/PrivateRoute.jsx';
 import { HelmetProvider } from 'react-helmet-async';
 import View from './Pages/View.jsx';
 import Forget from './Pages/Forget.jsx';
+import About from './Pages/About.jsx';
+import Contact from './Pages/Contact.jsx';
 
 
 const router = createBrowserRouter([
@@ -33,9 +35,9 @@ const router = createBrowserRouter([
       {
         path: "/details/:toyId",
         element: (
-          <PrivateRoute>
+          
             <Details />
-          </PrivateRoute>
+          
         ),
       },
       {
@@ -44,6 +46,22 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Profile />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "/about",
+        element: (
+          
+            <About />
+       
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+        
+            <Contact />
+         
         ),
       },
       {

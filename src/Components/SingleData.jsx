@@ -14,14 +14,14 @@ function SingleData({
   subCategory,
   toyId,
 }) {
-  console.log(price, rating, sellerName);
+  // console.log(price, rating, sellerName);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from2 = location.pathname;
   const { user, setUser, signoutFunction, loading, setLoading } =
       use(AuthContext);
-    console.log(user);
+    // console.log(user);
 
   const canGo = () => {
    
@@ -39,15 +39,16 @@ function SingleData({
   };
 
   return (
-    <div className="card bg-base-100 w-10/12 sm:w-96 shadow-sm text-orange-400 border-2 mx-auto border-orange-100 break-all">
+    <div className="card bg-base-100 h-85 sm:w-60 shadow-sm text-orange-400 border-2 mx-auto border-orange-100 break-all p-0 transform duration-300 hover:scale-105 hover:shadow-xl hover:border-orange-400">
       <div>
-        <figure className="h-48">
-          <img src={pictureURL} alt="Shoes" />
+        <figure className="m-3 ">
+          <img className=" w-50 h-30" src={pictureURL} alt="Shoes" />
         </figure>
       </div>
-      <div className="card-body">
+
+      <div className="card-body pt-0">
         <h2 className="card-title ">{toyName}</h2>
-        <div className="card-actions justify-start pt-5">
+        <div className="card-actions justify-start ">
           <div className="badge badge-outline">Price: {price}tk</div>
           <div className="badge badge-outline">Rating: {rating}</div>
         </div>
@@ -57,7 +58,7 @@ function SingleData({
             availableQuantity: {availableQuantity}
           </div>
         </div>
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end pb-0">
          
           <button onClick={canGo}>
             <Link className="btn bg-orange-500"
@@ -69,6 +70,7 @@ function SingleData({
           </button>
         </div>
       </div>
+
     </div>
   );
 }
