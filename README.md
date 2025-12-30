@@ -1,5 +1,7 @@
 # ToyApp 🧸
-### Toy Management & Listing Web Application 
+## 📄 Short Description
+ToyApp is a web-based toy management and listing platform that allows users to explore, add, update, and manage toy products with a responsive and interactive UI. It focuses on CRUD functionality and modern React practices, making it perfect for beginners and small toy store applications.
+---
 
 ## 📖 Overview
 ToyApp is a web-based toy management and listing platform where users can explore, add, update, and manage toy products in a simple and interactive way. The application is designed with a clean UI and responsive layout to ensure a smooth user experience across all devices. This project focuses on CRUD functionality, routing, and modern frontend practices, making it suitable for small toy stores or learning-based web projects.
@@ -57,6 +59,37 @@ This project is ideal for beginners and intermediate learners who want hands-on 
 - 📱 **Responsive UI** – Works on mobile, tablet, and desktop  
 
 ---
+## 📦 Dependencies
+
+### Frontend Dependencies
+- react ^19.1.1
+- react-dom ^19.1.1  
+- react-router ^7.9.5
+- framer-motion ^12.23.24
+- react-icons ^5.5.0
+- react-hot-toast ^2.6.0
+- react-toastify ^11.0.5
+- react-spinners ^0.17.0
+- swiper ^12.0.3
+- styled-components ^6.1.19
+- sweetalert2 ^11.26.3
+
+### Styling & UI
+- tailwindcss ^4.1.17
+- @tailwindcss/vite ^4.1.17
+- daisyui ^5.4.7
+
+### Backend & Services
+- firebase ^12.5.0
+- dotenv ^17.2.3
+- helmet ^8.1.0
+
+### Development Dependencies
+- vite ^7.1.7
+- @vitejs/plugin-react ^5.0.4
+- eslint ^9.36.0
+- @types/react ^19.1.16
+- @types/react-dom ^19.1.9
 
 ## 🚀 Local Development Guide
 
@@ -77,10 +110,7 @@ cd ToyApp
 ## 2.  Install Dependencies
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
+
 ```
 
 ## 3. Environment Variables Setup
@@ -98,10 +128,7 @@ VITE_FIREBASE_APP_ID=your_app_id
 ## 4. Run the Development Server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
 ```
 
 ## 5. Open in Browser
