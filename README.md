@@ -2,9 +2,8 @@
 ### Toy Management & Listing Web Application 
 
 ## 📖 Overview
-ToyApp is a web-based toy management and listing platform where users can explore, add, update, and manage toy products in a simple and interactive way. The application is designed with a clean UI and responsive layout to ensure a smooth user experience across all devices.
+ToyApp is a web-based toy management and listing platform where users can explore, add, update, and manage toy products in a simple and interactive way. The application is designed with a clean UI and responsive layout to ensure a smooth user experience across all devices. This project focuses on CRUD functionality, routing, and modern frontend practices, making it suitable for small toy stores or learning-based web projects.
 
-## This project focuses on CRUD functionality, routing, and modern frontend practices, making it suitable for small toy stores or learning-based web projects.
 ---
 
 ## Demo
