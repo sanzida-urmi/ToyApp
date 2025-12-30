@@ -1,7 +1,8 @@
 # ToyApp 🧸
+
 ## 📄 Short Description
 ToyApp is a web-based toy management and listing platform that allows users to explore, add, update, and manage toy products with a responsive and interactive UI. It focuses on CRUD functionality and modern React practices, making it perfect for beginners and small toy store applications.
----
+
 
 ## 📖 Overview
 ToyApp is a web-based toy management and listing platform where users can explore, add, update, and manage toy products in a simple and interactive way. The application is designed with a clean UI and responsive layout to ensure a smooth user experience across all devices. This project focuses on CRUD functionality, routing, and modern frontend practices, making it suitable for small toy stores or learning-based web projects.
@@ -15,7 +16,7 @@ Live URL : https://thunderous-cajeta-56b9ad.netlify.app
 ## 🖼️ Screenshots
 
 ### Homepage Dashboard
-![ToyApp Pro Dashboard](https://i.ibb.co.com/6JPmqQg4/Screenshot-2025-12-30-220027.png)
+![ToyApp Pro Dashboard](https://i.ibb.co/6JPmqQg4/Screenshot-2025-12-30-220027.png)
 
 ---
 
